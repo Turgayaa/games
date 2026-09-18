@@ -35,6 +35,14 @@
                 <td>{{ $game->genre }}</td>
                 <td>{{ $game->rating }}/10</td>
 
+
+                <td>
+                    <a href="/games/show/{{ $game->id }}" class="btn btn-info btn-sm">
+                        Show
+                    </a>
+
+                </td> 
+
                 <td>
                     <a href="/games/edit/{{ $game->id }}" class="btn btn-primary btn-sm">
                         Edit

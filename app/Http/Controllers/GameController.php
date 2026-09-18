@@ -53,7 +53,12 @@ public function index()
      */
     public function show(string $id)
     {
-        //
+    $game = Game::find($id); 
+
+    return view('games.show', [
+        'game' => $game
+    ]); 
+    
     }
 
     /**
