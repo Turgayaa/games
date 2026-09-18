@@ -16,6 +16,7 @@
             <th>Rating</th>
             <th>Edit</th>
             <th>Delete</th>
+            <th>Show</th>
         </tr>
     </thead>
 
