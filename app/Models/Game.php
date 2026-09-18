@@ -2,13 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
-        'title',
+        'game_name',
         'platform',
-        'release_year'
+        'genre',
+        'rating'
     ];
+
+    protected $table = 'games';
 }
