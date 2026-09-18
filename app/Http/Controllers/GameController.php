@@ -59,24 +59,49 @@ public function index()
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    public function edit($id)
+{
+    $game = Game::find($id);
+
+    return view('games.edit', [
+        'game' => $game
+    ]);
+}
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'game_name' => 'required',
+        'platform' => 'required',
+        'genre' => 'required',
+        'rating' => 'required|numeric|min:0|max:10'
+    ]);
+
+    $game = Game::find($id);
+
+    $game->game_name = $request->get('game_name');
+    $game->platform = $request->get('platform');
+    $game->genre = $request->get('genre');
+    $game->rating = $request->get('rating');
+
+    $game->save();
+
+    return redirect('/games');
+}
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
-    }
+    public function destroy($id)
+{
+    $game = Game::find($id);
+
+    $game->delete();
+
+    return redirect('/games');
+}
 }
