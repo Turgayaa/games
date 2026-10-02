@@ -5,6 +5,7 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\Beheer\PermissionController;
 use App\Http\Controllers\Beheer\RoleController;
 use App\Http\Controllers\Beheer\RolePermissionController;
+use App\Http\Controllers\Beheer\UserRoleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -85,6 +86,14 @@ Route::middleware(['auth', 'role:admin'])->prefix('beheer')->group(function () {
     Route::get('/role-permissions/edit/{permission_id}/{role_id}', [RolePermissionController::class, 'edit']);
     Route::post('/role-permissions/update/{permission_id}/{role_id}', [RolePermissionController::class, 'update']);
     Route::post('/role-permissions/destroy/{permission_id}/{role_id}', [RolePermissionController::class, 'destroy']);
+
+    // CRUD 4: Rol koppelen aan gebruiker
+    Route::get('/user-roles', [UserRoleController::class, 'index']);
+    Route::get('/user-roles/create', [UserRoleController::class, 'create']);
+    Route::post('/user-roles/store', [UserRoleController::class, 'store']);
+    Route::get('/user-roles/edit/{role_id}/{user_id}', [UserRoleController::class, 'edit']);
+    Route::post('/user-roles/update/{role_id}/{user_id}', [UserRoleController::class, 'update']);
+    Route::post('/user-roles/destroy/{role_id}/{user_id}', [UserRoleController::class, 'destroy']);
 
 });
 
